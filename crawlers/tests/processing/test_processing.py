@@ -42,7 +42,7 @@ def test_packet_length(strategy: str) -> None:
 
 
 def test_sanity_static_per_flow() -> None:
-    session = process_pcap(Path("test2.pcap"))
+    session = process_pcap(Path("test.pcap"), with_certificates=True)
     static_stats = session.static_stats_per_flow()
 
     assert isinstance(static_stats, pd.DataFrame)
@@ -181,7 +181,7 @@ def test_sanity_static_contextual() -> None:
 @pytest.mark.parametrize("buffer_tcp", [False, True])
 def test_sanity_temporal_per_flow(buffer_tcp: bool) -> None:
     session = process_pcap(
-        Path("http2_debug.pcap"), with_certificates=True, buffer_tcp=buffer_tcp
+        Path("test.pcap"), with_certificates=True, buffer_tcp=buffer_tcp
     )
     static, temporal = session.temporal_stats_per_flow()
     print(temporal)
