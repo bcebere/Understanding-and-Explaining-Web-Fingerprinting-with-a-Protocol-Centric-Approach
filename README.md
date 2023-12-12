@@ -11,7 +11,10 @@ This repository is organized as follows:
 ```bash
 models/
     |- src/                                 # Models and benchmarks
-    |- tests/                               # Unit tests for the models 
+    |- tests/                               # Unit tests for the models
+crawlers/
+    |- src/                                 # Traffic crawling and parsing 
+    |- tests/                               # Unit tests for the crawling logic
 ```
 
 ## Models
