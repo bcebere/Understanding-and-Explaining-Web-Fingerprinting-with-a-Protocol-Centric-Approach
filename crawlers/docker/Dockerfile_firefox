@@ -1,0 +1,16 @@
+FROM selenium/standalone-firefox:latest
+
+ENV DEBIAN_FRONTEND=noninteractive
+RUN sudo apt update && \
+    sudo apt install -y --no-install-recommends vim net-tools dnsutils iputils-ping tcpdump unbound python3-pip iptables iproute2 && \
+    sudo apt-get clean && \
+    sudo rm -rf /var/lib/apt/lists/*
+
+# Configure unbound
+RUN sudo mkdir -p /var/log/unbound/ && sudo mkdir -p /var/lib/unbound/ && \
+    sudo chown unbound:unbound /var/log/unbound && \
+    sudo cp -avr /usr/share/dns/* /var/lib/unbound/
+
+COPY unbound_custom.conf /etc/unbound/unbound.conf.d/unbound_custom.conf
+COPY entry_point.sh /opt/bin/entry_point.sh
+COPY dns_cache /home/seluser/dns_cache
