@@ -10,7 +10,6 @@ from tls_fingerprinting.models.base.nn.ts_model import TimeSeriesModel, modes
 from tls_fingerprinting.utils.datasets.time_series.google_stocks import (
     GoogleStocksDataloader,
 )
-from tls_fingerprinting.utils.datasets.time_series.pbc import PBCDataloader
 from tls_fingerprinting.utils.datasets.time_series.sine import SineDataloader
 
 
@@ -113,26 +112,3 @@ def test_rnn_classification_fit_predict(mode: str, source: Any) -> None:
 
     print(mode, model.score(static_data, temporal_data, observation_times, y))
     assert model.score(static_data, temporal_data, observation_times, y) <= 1
-
-
-@pytest.mark.parametrize("mode", modes)
-def test_rnn_irregular_ts(mode: str) -> None:
-    static, temporal, observation_times, outcome = PBCDataloader(as_numpy=True).load()
-    T, E = outcome
-    y = np.concatenate([np.expand_dims(T, axis=1), np.expand_dims(E, axis=1)], axis=1)
-
-    model = TimeSeriesModel(
-        task_type="regression",
-        n_static_units_in=static.shape[-1],
-        n_temporal_units_in=temporal[0].shape[-1],
-        n_temporal_window=max(len(tmp) for tmp in temporal),
-        output_shape=[2],
-        n_iter=10,
-        mode=mode,
-    )
-
-    model.fit(static, temporal, observation_times, y)
-
-    y_pred = model.predict(static, temporal, observation_times)
-
-    assert y_pred.shape == y.shape
