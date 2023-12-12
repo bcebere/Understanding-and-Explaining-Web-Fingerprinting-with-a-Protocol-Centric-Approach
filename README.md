@@ -45,4 +45,7 @@ print(scores["str"])
 
 ```
 
-M
+Running tests
+```bash
+pytest -vvsx
+```
