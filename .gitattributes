@@ -1,0 +1,4 @@
+experiments/domains_experiments/scripts/data/tranco_temporal_per_flow_cache_no_blacklists_static_DE.csv filter=lfs diff=lfs merge=lfs -text
+experiments/domains_experiments/scripts/data/tranco_temporal_per_flow_no_cache_no_blacklists_static_DE.csv filter=lfs diff=lfs merge=lfs -text
+experiments/domains_experiments/scripts/data/tranco_temporal_per_flow_cache_no_blacklists_ts_DE.pkl filter=lfs diff=lfs merge=lfs -text
+experiments/domains_experiments/scripts/data/tranco_temporal_per_flow_no_cache_no_blacklists_ts_DE.pkl filter=lfs diff=lfs merge=lfs -text
