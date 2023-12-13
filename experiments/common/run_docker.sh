@@ -18,7 +18,7 @@ docker network prune -f
 
 ## Start Chrome
 docker network create --opt com.docker.network.bridge.name="veth_chrome${index}" "veth-chrome${index}"
-docker run --cap-add NET_ADMIN -p ${sel_port}:4444 -p ${http_port}:7900 --shm-size="2g" --memory="4g" --memory-swap="4g" --dns=127.0.0.1 --name="selenium-chrome${index}" --network "veth-chrome${index}"  -v ${PWD}/shared_workspace:/tmp/shared_workspace -e SSLKEYLOGFILE=//tmp/shared_workspace/ssl_log_key_chrome${index}.log --rm -dit "selenium-chrome"
+docker run -p ${sel_port}:4444 -p ${http_port}:7900 --shm-size="2g" --dns=127.0.0.1 --name="selenium-chrome${index}" --network "veth-chrome${index}"  -v ${PWD}/shared_workspace:/tmp/shared_workspace -e SSLKEYLOGFILE=/tmp/shared_workspace/ssl_log_key_chrome${index}.log --rm -dit "selenium-chrome"
 
 # FIREFOX
 sel_port=`expr ${index} + ${index} + 4445`
@@ -30,4 +30,4 @@ docker network prune -f
 
 # Start Firefox
 docker network create --opt com.docker.network.bridge.name="veth_firefox${index}" "veth-firefox${index}"
-docker run --cap-add NET_ADMIN -p ${sel_port}:4444 -p ${http_port}:7901 --shm-size="2g" --memory="4g" --memory-swap="4g" --dns=127.0.0.1 --name="selenium-firefox${index}" --network "veth-firefox${index}"  -v ${PWD}/shared_workspace:/tmp/shared_workspace -e SSLKEYLOGFILE=//tmp/shared_workspace/ssl_log_key_ff${index}.log --rm -dit "selenium-firefox"
+docker run -p ${sel_port}:4444 -p ${http_port}:7901 --shm-size="2g" --dns=127.0.0.1 --name="selenium-firefox${index}" --network "veth-firefox${index}"  -v ${PWD}/shared_workspace:/tmp/shared_workspace -e SSLKEYLOGFILE=/tmp/shared_workspace/ssl_log_key_ff${index}.log --rm -dit "selenium-firefox"

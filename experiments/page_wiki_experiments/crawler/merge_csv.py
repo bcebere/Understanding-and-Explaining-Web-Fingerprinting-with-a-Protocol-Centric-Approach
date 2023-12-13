@@ -6,19 +6,18 @@ from typing import Optional
 # third party
 import pandas as pd
 
-suffix = ""
 out_dir = Path("../scripts/data")
+out_dir.mkdir(parents=True, exist_ok=True)
 
 
-def merge_temporal_per_flow(country: str, pd_lim: int = 50000) -> None:
-    workspace = Path(f"datasets_temporal_{country}{suffix}")
+def merge_temporal_per_flow(suffix: str, pd_lim: int = 50000) -> None:
+    workspace = Path(f"datasets_temporal_{suffix}")
 
     full_static_csv: Optional[pd.DataFrame] = None
     full_temporal_csv: Optional[pd.DataFrame] = None
     cnt = 0
     batch_idx = 0
 
-    print(workspace)
     for filename in glob.glob(str(workspace / "flow_static*.csv")):
         static_filename = Path(filename)
         base = static_filename.name.split("flow_static_")[1]
@@ -46,28 +45,43 @@ def merge_temporal_per_flow(country: str, pd_lim: int = 50000) -> None:
             )
 
         if cnt % 1000 == 0:
+            print("nans ", cnt, full_temporal_csv["meta_file"].isna().sum())
             print("merge ", cnt, full_static_csv.shape)
 
         if len(full_static_csv) > pd_lim:
             print("!!! merge batch done", batch_idx)
+
             assert full_static_csv is not None
             assert full_temporal_csv is not None
 
             full_static_csv.to_csv(
                 out_dir
-                / f"tranco_temporal_data_per_flow_static_data_{country}{suffix}_{batch_idx}.csv",
+                / f"uaug_temporal_data_per_flow_static_data_{suffix}_{batch_idx}.csv",
                 index=False,
             )
             full_temporal_csv.to_csv(
                 out_dir
-                / f"tranco_temporal_data_per_flow_ts_data_{country}{suffix}_{batch_idx}.csv",
+                / f"uaug_temporal_data_per_flow_ts_data_{suffix}_{batch_idx}.csv",
                 index=False,
             )
+
             batch_idx += 1
             full_static_csv = None
             full_temporal_csv = None
 
         cnt += 1
 
+    if full_temporal_csv is not None and full_static_csv is not None:
+        full_static_csv.to_csv(
+            out_dir
+            / f"uaug_temporal_data_per_flow_static_data_{suffix}_{batch_idx}.csv",
+            index=False,
+        )
+        full_temporal_csv.to_csv(
+            out_dir / f"uaug_temporal_data_per_flow_ts_data_{suffix}_{batch_idx}.csv",
+            index=False,
+        )
 
-merge_temporal_per_flow(country="DE")
+
+suffix = "DE"
+merge_temporal_per_flow(suffix=suffix)
