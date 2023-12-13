@@ -45,6 +45,18 @@ def refresh_dns_cache(docker_id: str) -> None:
             "/home/seluser/dns_cache/refresh_unbound_cache.sh",
         ]
     )
+    _ = subprocess.check_output(
+        [
+            "docker",
+            "exec",
+            "-i",
+            docker_id,
+            "sudo",
+            "service",
+            "unbound",
+            "restart",
+        ]
+    )
     log.debug(f"DNS cache reset : {str(cache_reset)}")
 
 

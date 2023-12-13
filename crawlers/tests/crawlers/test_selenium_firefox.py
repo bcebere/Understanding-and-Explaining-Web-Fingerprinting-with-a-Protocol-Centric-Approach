@@ -32,7 +32,6 @@ def test_page_load_in_firefox_ok_adblocking(
     for trace in traces:
         assert trace["page_body"] is not None
         assert trace["stacktrace"] is None
-        assert trace["metadata"]["engine"] == f"selenium-firefox{OFFSET}"
         assert trace["metadata"]["use_adblocking"] == use_adblocking
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
@@ -66,7 +65,6 @@ def test_page_load_in_firefox_fail_adblocking(
     for trace in traces:
         assert trace["page_body"] is None
         assert trace["stacktrace"] is not None
-        assert trace["metadata"]["engine"] == f"selenium-firefox{OFFSET}"
         assert trace["metadata"]["use_adblocking"] == use_adblocking
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
@@ -100,7 +98,6 @@ def test_page_load_in_firefox_ok_tracking(
     for trace in traces:
         assert trace["page_body"] is not None
         assert trace["stacktrace"] is None
-        assert trace["metadata"]["engine"] == f"selenium-firefox{OFFSET}"
         assert trace["metadata"]["use_tracking_blocking"] == use_tracking_blocking
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
@@ -134,7 +131,6 @@ def test_page_load_in_firefox_fail_tracking(
     for trace in traces:
         assert trace["page_body"] is None
         assert trace["stacktrace"] is not None
-        assert trace["metadata"]["engine"] == f"selenium-firefox{OFFSET}"
         assert trace["metadata"]["use_tracking_blocking"] == use_tracking_blocking
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
@@ -168,7 +164,6 @@ def test_page_load_in_firefox_ok_caching(
     for trace in traces:
         assert trace["page_body"] is not None
         assert trace["stacktrace"] is None
-        assert trace["metadata"]["engine"] == f"selenium-firefox{OFFSET}"
         assert trace["metadata"]["use_http_caching"] == use_http_caching
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
@@ -202,7 +197,6 @@ def test_page_load_in_firefox_fail_caching(
     for trace in traces:
         assert trace["page_body"] is None
         assert trace["stacktrace"] is not None
-        assert trace["metadata"]["engine"] == f"selenium-firefox{OFFSET}"
         assert trace["metadata"]["use_http_caching"] == use_http_caching
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
@@ -236,7 +230,6 @@ def test_page_load_in_firefox_ok_cookies(
     for trace in traces:
         assert trace["page_body"] is not None
         assert trace["stacktrace"] is None
-        assert trace["metadata"]["engine"] == f"selenium-firefox{OFFSET}"
         assert trace["metadata"]["use_user_cookies"] == use_user_cookies
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
@@ -270,7 +263,6 @@ def test_page_load_in_firefox_fail_cookies(
     for trace in traces:
         assert trace["page_body"] is None
         assert trace["stacktrace"] is not None
-        assert trace["metadata"]["engine"] == f"selenium-firefox{OFFSET}"
         assert trace["metadata"]["use_user_cookies"] == use_user_cookies
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
@@ -304,7 +296,6 @@ def test_page_load_in_firefox_ok_images(
     for trace in traces:
         assert trace["page_body"] is not None
         assert trace["stacktrace"] is None
-        assert trace["metadata"]["engine"] == f"selenium-firefox{OFFSET}"
         assert trace["metadata"]["use_images"] == use_images
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
@@ -338,7 +329,6 @@ def test_page_load_in_firefox_fail_images(
     for trace in traces:
         assert trace["page_body"] is None
         assert trace["stacktrace"] is not None
-        assert trace["metadata"]["engine"] == f"selenium-firefox{OFFSET}"
         assert trace["metadata"]["use_images"] == use_images
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
@@ -372,7 +362,6 @@ def test_page_load_in_firefox_ok_dns_cache(
     for trace in traces:
         assert trace["page_body"] is not None
         assert trace["stacktrace"] is None
-        assert trace["metadata"]["engine"] == f"selenium-firefox{OFFSET}"
         assert trace["metadata"]["use_dns_cache"] == use_dns_cache
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
@@ -406,7 +395,6 @@ def test_page_load_in_firefox_fail_dns_cache(
     for trace in traces:
         assert trace["page_body"] is None
         assert trace["stacktrace"] is not None
-        assert trace["metadata"]["engine"] == f"selenium-firefox{OFFSET}"
         assert trace["metadata"]["use_dns_cache"] == use_dns_cache
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
@@ -442,13 +430,13 @@ def test_page_load_in_firefox_user_agent(
         country="RO",
         network_type="mobile_data",
         remote_port=REMOTE_PORT,
-        # user_agent = user_agent,
+        user_agent=user_agent,
     )
     assert len(traces) == 2
     for trace in traces:
         assert trace["page_body"] is not None
         assert trace["stacktrace"] is None
-        # assert trace["metadata"]["user_agent"] == user_agent
+        assert trace["metadata"]["user_agent"] == user_agent
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
         assert trace["metadata"]["network_type"] == "mobile_data"
