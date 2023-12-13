@@ -5,13 +5,14 @@
 </p>
 
 In this repository, we provide the code to reproduce the results in the "Understanding-and-Explaining-Web-Fingerprinting-with-a-Data-Centric-Approach" paper.  
+The repository includes reference Machine Learning models for evaluation in the `models` folder and tools for generating HTTPS datasets in the `crawlers` folder.
 
 ## Repository structure
 This repository is organized as follows:
 ```bash
 models/
-    |- src/                                 # Models and benchmarks
-    |- tests/                               # Unit tests for the models
+    |- src/                                 # Models and evaluation methods
+    |- tests/                               # Unit tests for the ML models
 crawlers/
     |- src/                                 # Traffic crawling and parsing 
     |- tests/                               # Unit tests for the crawling logic
