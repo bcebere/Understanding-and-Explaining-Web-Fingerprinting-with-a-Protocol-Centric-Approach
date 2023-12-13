@@ -18,6 +18,19 @@ models/
 crawlers/
     |- src/                                 # Traffic crawling and parsing 
     |- tests/                               # Unit tests for the crawling logic
+experiments/
+    |- domains_experiments/                 # Domain experiments 
+      |- crawler/                           # Domain crawling logic
+      |- scripts/                           # Domain fingerprinting evaluation 
+    |- page_wiki_experiments/               # Wikipedia experiments 
+      |- crawler/                           # Wikipedia crawling logic
+      |- scripts/                           # Wikipedia fingerprinting evaluation 
+    |- page_9gag_experiments/               # 9GAG experiments 
+      |- crawler/                           # Wikipedia crawling logic
+      |- scripts/                           # Wikipedia fingerprinting evaluation 
+    |- page_imdb_experiments/               # IMDB experiments 
+      |- crawler/                           # Wikipedia crawling logic
+      |- scripts/                           # Wikipedia fingerprinting evaluation 
 ```
 
 ## Models
@@ -99,6 +112,9 @@ docker build --tag selenium-chrome -f Dockerfile_chrome .
 docker build --tag selenium-firefox -f Dockerfile_firefox .
 ```
 
+### Usage example
+See [dataset crawlers](experiments/domains_experiments/crawler/crawl.py).
+
 ### Tests
 If the library and docker builds worked, the unit tests should pass
 ```bash
@@ -106,4 +122,23 @@ cd crawlers
 pytest -vvsx
 ```
 
-###
+## Experiments
+
+The experiments are available in the `experiments` folder. Each experiment includes the crawling scripts and the fingerprinting evaluation code. The 9GAG and IMDB are not included in the repository due size.
+
+```bash
+experiments/
+    |- domains_experiments/                 # Domain experiments 
+      |- crawler/                           # Domain crawling logic
+      |- scripts/                           # Domain fingerprinting evaluation 
+    |- page_wiki_experiments/               # Wikipedia experiments 
+      |- crawler/                           # Wikipedia crawling logic
+      |- scripts/                           # Wikipedia fingerprinting evaluation 
+    |- page_9gag_experiments/               # 9GAG experiments 
+      |- crawler/                           # Wikipedia crawling logic
+      |- scripts/                           # Wikipedia fingerprinting evaluation 
+    |- page_imdb_experiments/               # IMDB experiments 
+      |- crawler/                           # Wikipedia crawling logic
+      |- scripts/                           # Wikipedia fingerprinting evaluation 
+```
+
