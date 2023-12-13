@@ -430,13 +430,13 @@ def test_page_load_in_chrome_user_agent(
         country="RO",
         network_type="mobile_data",
         remote_port=REMOTE_PORT,
-        # user_agent = user_agent,
+        user_agent=user_agent,
     )
     assert len(traces) == 2
     for trace in traces:
         assert trace["page_body"] is not None
         assert trace["stacktrace"] is None
-        # assert trace["metadata"]["user_agent"] == user_agent
+        assert trace["metadata"]["user_agent"] == user_agent
         assert trace["metadata"]["http_caching_repeats"] == 1
         assert trace["metadata"]["country"] == "RO"
         assert trace["metadata"]["network_type"] == "mobile_data"
