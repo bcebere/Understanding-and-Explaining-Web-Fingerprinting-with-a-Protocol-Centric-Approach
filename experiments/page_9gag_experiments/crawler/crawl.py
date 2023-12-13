@@ -4,6 +4,7 @@ import argparse
 # import random
 from pathlib import Path
 import random
+from urllib.parse import urlparse
 
 # third party
 import pandas as pd
@@ -14,7 +15,7 @@ import tls_crawler.logger as log
 
 country = "DE"
 
-parser = argparse.ArgumentParser(description="Wiki crawler")
+parser = argparse.ArgumentParser(description="Tranco crawler")
 parser.add_argument("--offset", type=int, default=0, help="Executation index")
 args = parser.parse_args()
 
@@ -27,7 +28,7 @@ docker_iface = f"veth_chrome{offset}"
 
 repeats = 5
 
-dataset = pd.read_csv("wiki_dataset.csv").sample(5000)
+dataset = pd.read_csv("9gag.csv")
 if offset != 0:
     dataset = dataset.sample(frac=1)
 
@@ -40,10 +41,13 @@ country = "DE"
 
 for idx, row in dataset.iterrows():
     for use_http_caching in [False, True]:
-        page_name = row["url"]
+        http_page_name = row["url"]
         for user_agent in user_agents:
             if user_agent == "":
                 continue
+
+            tokens = urlparse(http_page_name)
+            page_name = f"https://{tokens.netloc}{tokens.path}"
             print(page_name, user_agent)
             use_adblocking = False
             page = load_page_in_chrome(
