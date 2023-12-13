@@ -5,3 +5,4 @@ experiments/domains_experiments/scripts/data/tranco_temporal_per_flow_no_cache_n
 experiments/page_wiki_experiments/scripts/data/uaug_temporal_per_flow_no_cache_no_blacklists_static_DE.csv filter=lfs diff=lfs merge=lfs -text
 experiments/page_wiki_experiments/scripts/data/uaug_temporal_per_flow_no_cache_no_blacklists_ts_DE.pkl filter=lfs diff=lfs merge=lfs -text
 experiments/page_9gag_experiments/crawler/9gag.csv filter=lfs diff=lfs merge=lfs -text
+experiments/page_imdb_experiments/crawler/imdb_25k.csv filter=lfs diff=lfs merge=lfs -text

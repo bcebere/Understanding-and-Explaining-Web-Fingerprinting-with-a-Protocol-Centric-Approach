@@ -55,11 +55,11 @@ def merge_temporal_per_flow(suffix: str, pd_lim: int = 50000) -> None:
             assert full_temporal_csv is not None
 
             full_static_csv.to_csv(
-                f"notebooks/data/uaug_temporal_data_per_flow_static_data_{suffix}_{batch_idx}.csv",
+                f"notebooks/data/imdb_uaug_temporal_data_per_flow_static_data_{suffix}_{batch_idx}.csv",
                 index=False,
             )
             full_temporal_csv.to_csv(
-                f"notebooks/data/uaug_temporal_data_per_flow_ts_data_{suffix}_{batch_idx}.csv",
+                f"notebooks/data/imdb_uaug_temporal_data_per_flow_ts_data_{suffix}_{batch_idx}.csv",
                 index=False,
             )
 
@@ -71,11 +71,11 @@ def merge_temporal_per_flow(suffix: str, pd_lim: int = 50000) -> None:
 
     if full_temporal_csv is not None and full_static_csv is not None:
         full_static_csv.to_csv(
-            f"notebooks/data/uaug_temporal_data_per_flow_static_data_{suffix}_{batch_idx}.csv",
+            f"notebooks/data/imdb_uaug_temporal_data_per_flow_static_data_{suffix}_{batch_idx}.csv",
             index=False,
         )
         full_temporal_csv.to_csv(
-            f"notebooks/data/uaug_temporal_data_per_flow_ts_data_{suffix}_{batch_idx}.csv",
+            f"notebooks/data/imdb_uaug_temporal_data_per_flow_ts_data_{suffix}_{batch_idx}.csv",
             index=False,
         )
 
