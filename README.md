@@ -1,10 +1,10 @@
-# Understanding-and-Explaining-Web-Fingerprinting-with-a-Data-Centric-Approach
+# Understanding-and-Explaining-Web-Fingerprinting-with-a-Protocol-Centric-Approach
 
 <p align="center">
   <img src="https://github.com/bcebere/Understanding-and-Explaining-Web-Fingerprinting-with-a-Data-Centric-Approach/assets/1623754/a65ae505-6c7d-4750-a3bc-d3c1d3c69e36"/>
 </p>
 
-In this repository, we provide the code to reproduce the results in the "Understanding-and-Explaining-Web-Fingerprinting-with-a-Data-Centric-Approach" paper.  
+In this repository, we provide the code to reproduce the results in the "Understanding-and-Explaining-Web-Fingerprinting-with-a-Protocol-Centric-Approach" paper.  
 The repository includes reference Machine Learning models for evaluation in the `models` folder and tools for generating HTTPS datasets in the `crawlers` folder.
 
 The code was tested using `Linux Mint 21.2 Victoria` and `Python 3.10`.
