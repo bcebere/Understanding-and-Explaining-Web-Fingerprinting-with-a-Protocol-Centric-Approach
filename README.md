@@ -148,5 +148,10 @@ experiments/
 If you use this code, please cite the associated paper:
 
 ```
-@article{}
+@inproceedings{cebere2024understanding,
+  title={Understanding Web Fingerprinting with a Protocol-Centric Approach},
+  author={Cebere, Bogdan and Rossow, Christian},
+  booktitle={Proceedings of the 27th International Symposium on Research in Attacks, Intrusions and Defenses},
+  year={2024}
+}
 ```
