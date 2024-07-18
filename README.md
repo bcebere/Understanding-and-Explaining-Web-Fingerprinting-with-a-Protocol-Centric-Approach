@@ -142,3 +142,11 @@ experiments/
       |- scripts/                           # Wikipedia fingerprinting evaluation 
 ```
 
+
+## Citing
+
+If you use this code, please cite the associated paper:
+
+```
+@article{}
+```
