@@ -7,7 +7,7 @@
 In this repository, we provide the code to reproduce the results in the "Understanding-and-Explaining-Web-Fingerprinting-with-a-Protocol-Centric-Approach" paper.  
 The repository includes reference Machine Learning models for evaluation in the `models` folder and tools for generating HTTPS datasets in the `crawlers` folder.
 
-The code was tested using `Linux Mint 21.2 Victoria` and `Python 3.10`.
+The code was tested using `Linux Mint 21.2 Victoria`, `Python 3.10`, and `selenium/standalone-chrome:120.0-20231212`.
 
 ## Repository structure
 This repository is organized as follows:

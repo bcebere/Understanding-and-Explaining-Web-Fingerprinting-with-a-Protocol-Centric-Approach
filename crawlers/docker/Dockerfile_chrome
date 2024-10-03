@@ -1,4 +1,4 @@
-FROM selenium/standalone-chrome:latest
+FROM selenium/standalone-chrome:120.0-20231212
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN sudo apt update && \

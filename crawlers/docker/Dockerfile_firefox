@@ -1,4 +1,4 @@
-FROM selenium/standalone-firefox:latest
+FROM selenium/standalone-firefox:120.0-geckodriver-0.33-20231122
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN sudo apt update && \
